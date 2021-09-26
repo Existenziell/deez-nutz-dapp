@@ -1,0 +1,62 @@
+/* --------------------------------------------------------
+Style Sheet for DeezNutz
+
+version: 0.9
+last modified: 13.09.2021 by Christof Bauer
+author: Christof Bauer
+email: bauer.christof@gmail.com
+----------------------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+
+:root {
+  --color-brand: #8c00ff;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  @apply font-extrabold border-b-2;
+}
+
+.button {
+  @apply inline-flex 
+    items-center
+    rounded 
+    bg-brand 
+    text-gray-50 
+    text-xl 
+    font-bold 
+    px-4 
+    py-2 
+    shadow-2xl 
+    hover:shadow-none;
+}
+
+h2 {
+  @apply mt-6 mb-2 text-xl text-brand;
+}
+
+/* Counter bug in nextjs Image component - images are rendered with whitespace below
+https://github.com/vercel/next.js/issues/21914 */
+.image-wrapper {
+  display: relative;
+  text-align: bottom;
+  font-size: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+
+input:focus {
+  outline: none;
+}
