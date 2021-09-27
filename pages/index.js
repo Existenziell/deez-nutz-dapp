@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Web3Modal from "web3modal" //Used to connect to a users ehtereum wallet
 import axios from 'axios'
 import Image from 'next/image'
-import convertTimestamp from '../lib/convertTimestamp'
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 
 // Will be populated once the smart contract is deployed.
@@ -194,6 +193,7 @@ export default function Home() {
               </p>
             </section>
           }
+
           {minting &&
             <div className="h-max flex flex-col items-center mb-8">
               <ClimbingBoxLoader color={"#8c00ff"} loading={minting} size={20} />
