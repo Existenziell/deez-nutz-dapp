@@ -194,9 +194,9 @@ export default function Home() {
               </p>
             </section>
           }
-          {!minting &&
+          {minting &&
             <div className="h-max flex flex-col items-center mb-8">
-              <ClimbingBoxLoader color={"#8c00ff"} loading={!minting} size={20} />
+              <ClimbingBoxLoader color={"#8c00ff"} loading={minting} size={20} />
               <p className="mt-4 font-mono">Minting in progress, waiting for Network...</p>
             </div>
           }
