@@ -6,14 +6,12 @@ import Image from 'next/image'
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 
 // Will be populated once the smart contract is deployed.
-import {
-  deeznutzAddress
-} from '../config'
+import { deeznutzAddress } from '../config'
+console.log(deeznutzAddress);
 
 // Import ABIs - JSON representation of our smart contracts - allows to interaction from a frontend application
 // Have been compiled by hardhat
 import DeezNutz from '../artifacts/contracts/DeezNutzNFT.sol/DeezNutzNFT.json'
-// import Moralis from 'moralis'
 
 export default function Home() {
 
