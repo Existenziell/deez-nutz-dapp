@@ -2,13 +2,13 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
 const fs = require('fs');
 
-// const privateKey = fs.readFileSync(".secret").toString().trim() || "";
-// const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
-// const moralisId = fs.readFileSync(".moralisid").toString().trim() || "";
+const privateKey = fs.readFileSync(".secret").toString().trim() || "";
+const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
+const moralisId = fs.readFileSync(".moralisid").toString().trim() || "";
 
-const privateKey = process.env.NEXT_ACCOUNT_SECRET || "";
-const infuraId = process.env.NEXT_INFURA_ID || "";
-const moralisId = process.env.NEXT_MORALIS_ID || "";
+// const privateKey = process.env.NEXT_ACCOUNT_SECRET;
+// const infuraId = process.env.NEXT_INFURA_ID;
+// const moralisId = process.env.NEXT_MORALIS_ID;
 
 module.exports = {
   defaultNetwork: "hardhat",

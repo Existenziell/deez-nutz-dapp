@@ -110,10 +110,10 @@ export default function Home() {
       <>
         <div className="w-full px-8 flex flex-col items-center pb-32">
           <h1 className="text-6xl font-bold text-brand mt-4">Welcome to DeezNutz</h1>
-          <p className="my-2 text-lg italic">"Algorithmically generated NFT ball sacks"</p>
+          <p className="my-2 text-lg italic">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
           <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4">
             <div className="min-w-max border-2 rounded-lg mr-16">
-              <Image src={'/gamify.png'} width={350} height={350} />
+              <Image src={'/gamify.png'} width={350} height={350} alt={"NFT template"} />
             </div>
             <div>
               <h1 className="mb-8 mt-16 md:mt-0 text-2xl text-center">A total of <span className="text-brand">{maxSupply.toNumber()}</span> unique DeezNutz Tokens are ready to be minted!</h1>
@@ -141,7 +141,7 @@ export default function Home() {
             </div>
           </div>
 
-          {revealed && !nftsClaimed ?
+          {(revealed && !nftsClaimed) ?
             <div>
               <h2 className="text-center">Minted NFTs:</h2>
               <ul className='flex flex-wrap justify-center items-center p-8 w-screen'>
@@ -149,7 +149,7 @@ export default function Home() {
                   const { edition, name, description, image, date, dna } = n.data
                   return (
                     <li key={edition} className="mb-16 mr-6 text-center">
-                      <Image src={image.toString()} width={200} height={200} />
+                      <Image src={image.toString()} width={200} height={200} alt={description} />
                       <div className='mt-2'>
                         <h2 className="text-2xl">{name}</h2>
                         {/* <p className="text-xs">Created: {convertTimestamp(date)}</p> */}
@@ -203,11 +203,11 @@ export default function Home() {
 
           <section className="bg-gray-50 shadow px-8 py-3">
             <h2>Fair Distribution</h2>
-            <p>We don't like Ponzis and this is why there are no bonding curves here. Buying a DeezNutz costs {ethers.utils.formatEther(cost)} ETH. There are no price tiers – same chances for everyone!</p>
+            <p>We don&apos;t like Ponzis and this is why there are no bonding curves here. Buying a DeezNutz costs {ethers.utils.formatEther(cost)} ETH. There are no price tiers – same chances for everyone!</p>
             <h2>Specs</h2>
             <p>Each DeezNutz is unique and programmatically generated from over 120 possible traits. All Nutz are cute, but some have legendary rare traits! The Nutz are stored as ERC-721 tokens on the Polygon blockchain (cheaper gas fees!) and hosted on IPFS. Minting a Nut costs {ethers.utils.formatEther(cost)} ETH.</p>
             <h2>Verified Smart Contract Address:</h2>
-            <p><a href={`https://ropsten.etherscan.io/address/${address}`} target="_blank" rel="noopener noreferrer">{address}</a></p>
+            <p><a href={`https://ropsten.etherscan.io/address/${address}#code`} target="_blank" rel="noopener noreferrer">{address}</a></p>
           </section>
         </div>
 

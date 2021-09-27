@@ -1,1 +1,1 @@
-export const deeznutzAddress = "0xaC0b5E7b39BBd3b036776Ada94A4546ff40A27Ab"
+export const deeznutzAddress = "0x5Da99b35C381F84eC97d82118da5D4550e7d52AD"
