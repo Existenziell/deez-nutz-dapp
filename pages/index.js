@@ -7,7 +7,6 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 
 // Will be populated once the smart contract is deployed.
 import { deeznutzAddress } from '../config'
-console.log(deeznutzAddress);
 
 // Import ABIs - JSON representation of our smart contracts - allows to interaction from a frontend application
 // Have been compiled by hardhat
@@ -27,7 +26,6 @@ export default function Home() {
   const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
-    // Moralis.initialize('CyDwbVDgE1b9Y9eNQCWmbhwTsnpYAQh5Hdz8xwg1')
     getContractInfo()
   }, [nftsClaimed])
 
@@ -35,7 +33,7 @@ export default function Home() {
     // const provider = new ethers.providers.JsonRpcProvider()
     let provider = ethers.getDefaultProvider('ropsten');
 
-    const contract = new ethers.Contract("0x5Da99b35C381F84eC97d82118da5D4550e7d52AD", DeezNutz.abi, provider)
+    const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
     // console.log(contract);
     const info = {
       address: contract.address,
