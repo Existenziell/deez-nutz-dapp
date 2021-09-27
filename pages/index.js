@@ -25,6 +25,7 @@ export default function Home() {
   const [mintedNfts, setMintedNfts] = useState([])
   const [revealing, setRevealing] = useState(false)
   const [revealed, setRevealed] = useState(false)
+  const [minting, setMinting] = useState(false);
   const [nftsClaimed, setNftsClaimed] = useState(false);
   const [feedback, setFeedback] = useState("");
 
@@ -71,6 +72,7 @@ export default function Home() {
   }
 
   async function mint() {
+    setMinting(true)
     // Check MetaMask
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
@@ -85,7 +87,8 @@ export default function Home() {
       .then((receipt) => {
         // console.log(receipt);
         setFeedback("Congratulations, you are now the owner of your very own DeezNutz NFT!")
-        setNftsClaimed(true);
+        setMinting(false)
+        setNftsClaimed(true)
       })
   }
 
@@ -163,7 +166,7 @@ export default function Home() {
             <div className="h-8"></div>
           }
 
-          {!nftsClaimed &&
+          {!nftsClaimed && !minting &&
             <section className="flex items-center justify-center text-xl mb-8 border-2 border-dotted p-8">
               <p className="mr-8">Mint{' '}</p>
               <div className="inline-flex flex-col items-center justify-center w-6">
@@ -191,6 +194,12 @@ export default function Home() {
               </p>
             </section>
           }
+          {!minting &&
+            <div className="h-max flex flex-col items-center mb-8">
+              <ClimbingBoxLoader color={"#8c00ff"} loading={!minting} size={20} />
+              <p className="mt-4 font-mono">Minting in progress, waiting for Network...</p>
+            </div>
+          }
 
           <section className="bg-gray-50 shadow px-8 py-3">
             <h2>Fair Distribution</h2>
@@ -198,7 +207,7 @@ export default function Home() {
             <h2>Specs</h2>
             <p>Each DeezNutz is unique and programmatically generated from over 120 possible traits. All Nutz are cute, but some have legendary rare traits! The Nutz are stored as ERC-721 tokens on the Polygon blockchain (cheaper gas fees!) and hosted on IPFS. Minting a Nut costs {ethers.utils.formatEther(cost)} ETH.</p>
             <h2>Verified Smart Contract Address:</h2>
-            <p><a href={`https://ropsten.etherscan.io/address/${address}#code`} target="_blank" rel="noopener noreferrer">{address}</a></p>
+            <p><a href={`https://ropsten.etherscan.io/address/${address}`} target="_blank" rel="noopener noreferrer">{address}</a></p>
           </section>
         </div>
 
