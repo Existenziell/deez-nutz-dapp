@@ -35,6 +35,10 @@ email: bauer.christof@gmail.com
     hover:shadow-none;
 }
 
+h1 {
+  @apply mt-8 mb-2 text-6xl text-brand font-bold;
+}
+
 h2 {
   @apply mt-6 mb-2 text-xl text-brand;
 }

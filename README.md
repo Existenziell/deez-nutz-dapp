@@ -53,4 +53,5 @@ We deploy using hardhat.
 npx hardhat clean
 npx hardhat compile
 npx hardhat run scripts/deploy.js --network localhost
+npx hardhat verify <ADDRESS> --network ropsten "DeezNutz NFT" "DNN" "https://deez-nutz.vercel.app/api/"
 ```

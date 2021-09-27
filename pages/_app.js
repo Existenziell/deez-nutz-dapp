@@ -1,10 +1,13 @@
 import '../styles/globals.css'
+import Head from '../components/Head'
 import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import NextNprogress from 'nextjs-progressbar';
 
 const DeezNutz = ({ Component, pageProps }) => {
   return (
     <div>
+      <Head />
       <NextNprogress
         color="#8c00ff"
         startPosition={0.3}
@@ -14,6 +17,7 @@ const DeezNutz = ({ Component, pageProps }) => {
       />
       <Nav />
       <Component {...pageProps} />
+      <Footer />
     </div>
   )
 }

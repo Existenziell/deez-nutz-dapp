@@ -5,13 +5,10 @@ const Nav = () => {
 
   const router = useRouter()
   const links = [
-    { name: 'Home', path: '/' },
+    { name: 'NFTs', path: '/' },
     { name: 'Team', path: '/team' },
     { name: 'Roadmap', path: '/roadmap' },
     { name: 'Perks', path: '/perks' },
-    // { name: 'Sell Digital Asset', path: '/create-item' },
-    // { name: 'My Digital Assets', path: '/my-assets' },
-    // { name: 'Creator Dashboard', path: '/creator-dashboard' },
   ]
 
   return (
