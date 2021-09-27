@@ -35,7 +35,7 @@ export default function Home() {
     // const provider = new ethers.providers.JsonRpcProvider()
     let provider = ethers.getDefaultProvider('ropsten');
 
-    const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
+    const contract = new ethers.Contract("0x5Da99b35C381F84eC97d82118da5D4550e7d52AD", DeezNutz.abi, provider)
     // console.log(contract);
     const info = {
       address: contract.address,
