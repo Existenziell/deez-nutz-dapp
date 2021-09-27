@@ -34,7 +34,6 @@ export default function Home() {
     let provider = ethers.getDefaultProvider('ropsten');
 
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
-    // console.log(contract);
     const info = {
       address: contract.address,
       totalSupply: await contract.totalSupply(),
@@ -75,12 +74,10 @@ export default function Home() {
     const signer = provider.getSigner()
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
     const address = await signer.getAddress()
-    // console.log(address, mintAmount);
 
     const transaction = await contract.mint(address, mintAmount)
     await transaction.wait()
       .then((receipt) => {
-        // console.log(receipt);
         setFeedback("Congratulations, you are now the owner of your very own DeezNutz NFT!")
         setMinting(false)
         setNftsClaimed(true)
@@ -203,7 +200,7 @@ export default function Home() {
             <h2>Specs</h2>
             <p>Each DeezNutz is unique and programmatically generated from over 120 possible traits. All Nutz are cute, but some have legendary rare traits! The Nutz are stored as ERC-721 tokens on the Polygon blockchain (cheaper gas fees!) and hosted on IPFS. Minting a Nut costs {ethers.utils.formatEther(cost)} ETH.</p>
             <h2>Verified Smart Contract Address:</h2>
-            <p><a href={`https://ropsten.etherscan.io/address/${address}#code`} target="_blank" rel="noopener noreferrer">{address}</a></p>
+            <p><a href={`https://ropsten.etherscan.io/address/${address}`} target="_blank" rel="noopener noreferrer">{address}</a></p>
           </section>
         </div>
 
