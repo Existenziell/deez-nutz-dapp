@@ -5,6 +5,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 import Main from '../components/Main'
+import detectEthereumProvider from '@metamask/detect-provider'
 
 // Will be populated once the smart contract is deployed.
 import { deeznutzAddress } from '../config'
@@ -25,6 +26,7 @@ export default function Home() {
   const [minting, setMinting] = useState(false);
   const [nftsClaimed, setNftsClaimed] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [networkInfo, setNetworkInfo] = useState("");
 
   useEffect(() => {
     getContractInfo()
@@ -33,7 +35,6 @@ export default function Home() {
   async function getContractInfo() {
     // const provider = new ethers.providers.JsonRpcProvider()
     let provider = ethers.getDefaultProvider('ropsten');
-
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
     const info = {
       address: contract.address,
@@ -69,22 +70,33 @@ export default function Home() {
   async function mint() {
     setMinting(true)
     // Check MetaMask
-    const web3Modal = new Web3Modal()
-    const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
-    const signer = provider.getSigner()
-    const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
-    const address = await signer.getAddress()
+    const eth = await detectEthereumProvider()
+    if (eth) {
+      const web3Modal = new Web3Modal()
+      const connection = await web3Modal.connect()
+      const provider = new ethers.providers.Web3Provider(connection)
+      const network = await provider.getNetwork()
 
-    const transaction = await contract.mint(address, mintAmount)
-    await transaction.wait()
-      .then((receipt) => {
-        setFeedback("Congratulations, you are now the owner of your very own DeezNutz NFT!")
-        setMinting(false)
-        setNftsClaimed(true)
-      })
+      if (network.chainId == 3) {
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
+        const address = await signer.getAddress()
+        const transaction = await contract.mint(address, mintAmount)
+        await transaction.wait()
+          .then((receipt) => {
+            setFeedback("Congratulations, you are now the owner of your very own DeezNutz NFT!")
+            setMinting(false)
+            setNftsClaimed(true)
+          })
+      } else {
+        // console.log("Please change network to Polygon in Metamask.")
+        setNetworkInfo("Please change network to Polygon in Metamask.")
+      }
+    } else {
+      // console.log('Please install MetaMask!')
+      setNetworkInfo("Please install Metamask to proceed.")
+    }
   }
-
   const checkMintAmount = (amount) => {
     if (amount >= 1 && amount <= 20) {
       setMintAmount(amount)
@@ -116,7 +128,7 @@ export default function Home() {
               Claim your very own today. Prices stay the same for all initial NFTs. <br />
             </p>
             {nftsClaimed ?
-              <p className="mt-12 text-brand text-2xl text-center border-2 border-dotted p-8">{feedback}</p>
+              <p className="mt-12 text-white bg-brand text-2xl text-center shadow p-8">{feedback}</p>
               :
               <p className="bg-gray-100 shadow px-6 py-4 mt-8 text-center">
                 Special Mint Price: <span className="font-bold text-brand">{ethers.utils.formatEther(cost)} ETH</span><br />
@@ -192,6 +204,7 @@ export default function Home() {
           <div className="h-max flex flex-col items-center mb-8">
             <ClimbingBoxLoader color={"#8c00ff"} loading={minting} size={20} />
             <p className="mt-4 font-mono">Minting in progress, waiting for Network...</p>
+            <p className="font-mono">{networkInfo}</p>
           </div>
         }
 
