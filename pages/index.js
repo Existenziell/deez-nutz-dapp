@@ -38,7 +38,7 @@ export default function Home() {
     let provider = ethers.getDefaultProvider('ropsten');
 
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
-    console.log(contract);
+    // console.log(contract);
     const info = {
       address: contract.address,
       totalSupply: await contract.totalSupply(),
@@ -78,12 +78,12 @@ export default function Home() {
     const signer = provider.getSigner()
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
     const address = await signer.getAddress()
-    console.log(address, mintAmount);
+    // console.log(address, mintAmount);
 
     const transaction = await contract.mint(address, mintAmount)
     await transaction.wait()
       .then((receipt) => {
-        console.log(receipt);
+        // console.log(receipt);
         setFeedback("Congratulations, you are now the owner of your very own DeezNutz NFT!")
         setNftsClaimed(true);
       })
