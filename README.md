@@ -1,24 +1,24 @@
-# DeezNutz dApp built with Solidity, Next.js, Hardhat, IPFS, Tailwind, ...
+# DeezNutz NFT dApp
 
-## Setup
+Built with Solidity, Next.js, Hardhat, IPFS, Tailwind
 
-1. Run
+1. Setup
 
-# install using NPM or Yarn
-
+```sh
 npm install
+```
 
-# or
+or
 
+```sh
 yarn
-
-````
+```
 
 2. Start the local Hardhat node
 
 ```sh
 npx hardhat node
-````
+```
 
 3. With the network running, deploy the contracts to the local network in a separate terminal window
 
