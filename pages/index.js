@@ -35,6 +35,7 @@ export default function Home() {
   async function getContractInfo() {
     // const provider = new ethers.providers.JsonRpcProvider()
     let provider = ethers.getDefaultProvider('ropsten');
+    // If the third argument is provider, the contract is read-only
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
     const info = {
       address: contract.address,
@@ -79,6 +80,7 @@ export default function Home() {
 
       if (network.chainId == 3) {
         const signer = provider.getSigner()
+        // Since the third argument is signer, the contract data can be manipulated
         const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
         const address = await signer.getAddress()
         const transaction = await contract.mint(address, mintAmount)
@@ -116,9 +118,9 @@ export default function Home() {
     return (
       <Main title='DeezNutz NFTs' titleSuffix={false}>
         <h1 className="text-center">Welcome to DeezNutz</h1>
-        <p className="text-lg italic">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
+        <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
         <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4">
-          <div className="min-w-max border-2 rounded-lg mr-16">
+          <div className="min-w-max mx-auto border-2 rounded-lg md:mr-16">
             <Image src={'/gamify.png'} width={350} height={350} alt={"NFT template"} />
           </div>
           <div>
@@ -172,8 +174,8 @@ export default function Home() {
         }
 
         {!nftsClaimed && !minting &&
-          <section className="flex items-center justify-center text-xl mb-8 border-2 border-dotted p-8">
-            <p className="mr-8">Mint{' '}</p>
+          <section className="flex flex-col md:flex-row items-center justify-center text-xl mb-8 border-2 border-dotted p-8">
+            <p className="md:mr-8">Mint{' '}</p>
             <div className="inline-flex flex-col items-center justify-center w-6">
               <svg onClick={() => checkMintAmount(mintAmount + 1)} xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 cursor-pointer text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
@@ -184,16 +186,16 @@ export default function Home() {
               </svg>
             </div>
 
-            <span className="ml-8 w-48">DeezNutz NFT{mintAmount > 1 ? `s` : null}</span>
+            <span className="text-center md:text-left md:ml-8 w-48">DeezNutz NFT{mintAmount > 1 ? `s` : null}</span>
 
-            <button className="button" onClick={mint}>
+            <button className="mt-4 md:mt-0 button" onClick={mint}>
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
               </svg>
               <span>Get Lucky</span>
             </button>
 
-            <p className="text-sm ml-8">
+            <p className="text-sm md:ml-8 mt-4 md:mt-0">
               <span className="font-bold block">Cost:</span>
               {mintAmount * ethers.utils.formatEther(cost)} ETH<br />+ gas fee.
             </p>
@@ -208,7 +210,7 @@ export default function Home() {
           </div>
         }
 
-        <section className="bg-gray-50 shadow px-8 py-3">
+        <section className="bg-gray-50 shadow px-8 py-3 w-screen md:w-full">
           <h2>Fair Distribution</h2>
           <p>We don&apos;t like Ponzis and this is why there are no bonding curves here. Buying a DeezNutz costs {ethers.utils.formatEther(cost)} ETH. There are no price tiers – same chances for everyone!</p>
           <h2>Specs</h2>
