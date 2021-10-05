@@ -22,9 +22,9 @@ module.exports = {
     // TESTNET
     mumbai: {
       // Infura
-      url: `https://polygon-mumbai.infura.io/v3/${infuraId}`,
+      // url: `https://polygon-mumbai.infura.io/v3/${infuraId}`,
       // Moralis
-      // url: `https://speedy-nodes-nyc.moralis.io/${moralisId}/polygon/mumbai`,
+      url: `https://speedy-nodes-nyc.moralis.io/${moralisId}/polygon/mumbai`,
       // url: "https://rpc-mumbai.matic.today",
       accounts: [privateKey]
     },

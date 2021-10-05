@@ -6,6 +6,8 @@ import Image from 'next/image'
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 import Main from '../components/Main'
 import detectEthereumProvider from '@metamask/detect-provider'
+// import { useMoralis } from "react-moralis";
+// import Moralis from 'moralis'
 
 // Will be populated once the smart contract is deployed.
 import { deeznutzAddress } from '../config'
@@ -15,6 +17,23 @@ import { deeznutzAddress } from '../config'
 import DeezNutz from '../artifacts/contracts/DeezNutzNFT.sol/DeezNutzNFT.json'
 
 export default function Home() {
+
+  // const { authenticate, isAuthenticated, user } = useMoralis();
+
+  // if (!isAuthenticated) {
+  //   return (
+  //     <div>
+  //       <button onClick={() => authenticate()}>Authenticate with Metamask</button>
+  //     </div>
+  //   );
+  // }
+  // const getUserTokens = async () => {
+  //   const options = { chain: 'mumbai', address: '0x9153Fb4f3e74795b1250D9bd8f4db9A79fab29f9' };
+  //   const balances = await Moralis.Web3.getAllERC20(options)
+  //   const b = await balances
+  //   return balances
+  // }
+  // console.log(getUserTokens());
 
   // Local state
   const [contractInfo, setContractInfo] = useState({})
@@ -33,8 +52,15 @@ export default function Home() {
   }, [nftsClaimed])
 
   async function getContractInfo() {
+    // const moralisId = process.env.NEXT_MORALIS_ID
+    const nodeUrl = `https://speedy-nodes-nyc.moralis.io/661d2cac001d8e6c33d63f3a/polygon/mumbai`;
+    const provider = new ethers.providers.JsonRpcProvider(nodeUrl);
+    // provider is read-only, get a signer for on-chain transactions
+    const signer = provider.getSigner();
+
+    // local: 
     // const provider = new ethers.providers.JsonRpcProvider()
-    let provider = ethers.getDefaultProvider('ropsten');
+
     // If the third argument is provider, the contract is read-only
     const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
     const info = {
@@ -46,7 +72,7 @@ export default function Home() {
       maxMintAmount: await contract.maxMintAmount(),
     }
 
-    await setContractInfo(info)
+    setContractInfo(info)
     setLoading(false)
   }
 
@@ -73,16 +99,21 @@ export default function Home() {
     // Check MetaMask
     const eth = await detectEthereumProvider()
     if (eth) {
-      const web3Modal = new Web3Modal()
-      const connection = await web3Modal.connect()
-      const provider = new ethers.providers.Web3Provider(connection)
+      const nodeUrl = `https://speedy-nodes-nyc.moralis.io/661d2cac001d8e6c33d63f3a/polygon/mumbai`
+      const provider = new ethers.providers.JsonRpcProvider(nodeUrl)
+      // console.log(provider);
       const network = await provider.getNetwork()
 
-      if (network.chainId == 3) {
+      if (network.chainId == 80001) {
+        // console.log("here");
         const signer = provider.getSigner()
         // Since the third argument is signer, the contract data can be manipulated
         const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
+        console.log(signer, contract);
         const address = await signer.getAddress()
+        const accounts = await provider.request({ method: 'eth_requestAccounts' });
+
+        console.log(address);
         const transaction = await contract.mint(address, mintAmount)
         await transaction.wait()
           .then((receipt) => {
@@ -107,8 +138,9 @@ export default function Home() {
 
   if (loading)
     return (
-      <div className="top-1/2 left-1/2 absolute">
+      <div className="flex flex-col items-center justify-center h-screen">
         <ClimbingBoxLoader color={"#8c00ff"} size={40} />
+        <p className="font-mono relative top-24 left-6">Connecting to the blockchain...</p>
       </div>
     )
 
@@ -117,11 +149,11 @@ export default function Home() {
 
     return (
       <Main title='DeezNutz NFTs' titleSuffix={false}>
-        <h1 className="text-center">Welcome to DeezNutz</h1>
+        <h1 className="text-center">DeezNutz NFT collection</h1>
         <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
         <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4">
-          <div className="min-w-max mx-auto border-2 rounded-lg md:mr-16">
-            <Image src={'/gamify.png'} width={350} height={350} alt={"NFT template"} />
+          <div className="image-wrapper min-w-max mx-auto border-4 shadow-xl md:mr-16">
+            <Image src={'/gamify2.png'} width={350} height={350} alt={"NFT mint template"} />
           </div>
           <div>
             <h1 className="mb-8 mt-16 md:mt-0 text-2xl text-center">A total of <span className="text-brand">{maxSupply.toNumber()}</span> unique DeezNutz Tokens are ready to be minted!</h1>
@@ -216,7 +248,7 @@ export default function Home() {
           <h2>Specs</h2>
           <p>Each DeezNutz is unique and programmatically generated from over 120 possible traits. All Nutz are cute, but some have legendary rare traits! The Nutz are stored as ERC-721 tokens on the Polygon blockchain (cheaper gas fees!) and hosted on IPFS. Minting a Nut costs {ethers.utils.formatEther(cost)} ETH.</p>
           <h2>Verified Smart Contract Address:</h2>
-          <p><a href={`https://ropsten.etherscan.io/address/${address}#code`} target="_blank" rel="noopener noreferrer">{address}</a></p>
+          <p><a href={`https://mumbai.polygonscan.com/address/${address}#code`} target="_blank" rel="noopener noreferrer">{address}</a></p>
         </section>
 
       </Main>
