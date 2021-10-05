@@ -152,7 +152,7 @@ export default function Home() {
         <h1 className="text-center">DeezNutz NFT collection</h1>
         <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
         <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4">
-          <div className="image-wrapper min-w-max mx-auto border-4 shadow-xl md:mr-16">
+          <div className="image-wrapper text-center min-w-max mx-auto border-4 shadow-xl md:mr-16">
             <Image src={'/gamify2.png'} width={350} height={350} alt={"NFT mint template"} />
           </div>
           <div>
