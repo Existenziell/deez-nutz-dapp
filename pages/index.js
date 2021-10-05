@@ -242,6 +242,10 @@ export default function Home() {
           </div>
         }
 
+        <div className="flex flex-col items-center justify-center gap-8">
+          <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
+        </div>
+
         <section className="bg-gray-50 shadow px-8 py-3 w-screen md:w-full">
           <h2>Fair Distribution</h2>
           <p>We don&apos;t like Ponzis and this is why there are no bonding curves here. Buying a DeezNutz costs {ethers.utils.formatEther(cost)} ETH. There are no price tiers – same chances for everyone!</p>
