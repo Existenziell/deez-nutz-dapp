@@ -10,7 +10,7 @@ email: bauer.christof@gmail.com
 @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 :root {
-  --color-brand: #8c00ff;
+  --color-brand: #00A6D7;
 }
 
 @tailwind base;

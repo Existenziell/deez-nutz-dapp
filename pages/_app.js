@@ -3,16 +3,16 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import NextNprogress from 'nextjs-progressbar';
-// import { MoralisProvider } from "react-moralis";
 import Banner from '../components/Banner';
+// import { MoralisProvider } from "react-moralis";
 
 const DeezNutz = ({ Component, pageProps }) => {
   return (
     // <MoralisProvider appId="CyDwbVDgE1b9Y9eNQCWmbhwTsnpYAQh5Hdz8xwg1" serverUrl="https://eh2neiekfbww.moralishost.com:2053/server">
-    <div>
+    <div className="dark:bg-black">
       <Head />
       <NextNprogress
-        color="#8c00ff"
+        color="var(--color-brand)"
         startPosition={0.3}
         stopDelayMs={100}
         height={3}

@@ -4,7 +4,7 @@ const addBrandToTitle = (title, addSuffix = true) => (addSuffix ? `${title} | De
 
 const Main = ({ title, children, titleSuffix = true }) => {
   return (
-    <main className='w-full flex flex-col items-center justify-center px-8 pb-16'>
+    <main className='flex flex-col items-center justify-center px-8 pb-16 dark:bg-black'>
       <NextSeo title={addBrandToTitle(title, titleSuffix)} />
       {children}
     </main>

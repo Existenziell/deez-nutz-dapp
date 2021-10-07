@@ -1,6 +1,6 @@
 module.exports = {
   purge: false,
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media", // or 'media' or 'class'
   theme: {
     fontFamily: {
       'sans': ['Nunito'],
@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'brand': '#8c00ff',
+        'brand': '#00A6D7',
       },
     },
   },
