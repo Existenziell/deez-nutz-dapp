@@ -22,11 +22,11 @@ const Collection = () => {
   }, [])
 
   async function getMetadata() {
-    console.log("getMetadata", contractInfo);
+    // console.log("getMetadata", contractInfo);
     let mintedNfts = []
     for (let i = 1; i <= contractInfo.totalSupply.toNumber(); i++) {
       const meta = await axios.get(`${contractInfo.baseUri}${i}`)
-      console.log(meta);
+      // console.log(meta);
       mintedNfts.push(meta)
     }
     return mintedNfts
@@ -47,7 +47,7 @@ const Collection = () => {
         <h2 className="text-center">Minted NFTs:</h2>
         <ul className='flex flex-wrap justify-center items-center p-8 w-screen'>
           {mintedNfts.map(n => {
-            console.log(n.data);
+            // console.log(n.data);
             const { edition, name, description, image, date, dna } = n.data
 
             return (
