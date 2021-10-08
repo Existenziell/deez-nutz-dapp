@@ -104,7 +104,7 @@ const Mint = () => {
 
   if (loading)
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center mt-24">
         <ClimbingBoxLoader color={"var(--color-brand)"} size={40} />
         <p className="font-mono relative top-24 left-6 dark:text-white">Connecting to the blockchain...</p>
       </div>
