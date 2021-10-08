@@ -136,7 +136,7 @@ const Mint = () => {
             <Image src={'/gamify.png'} width={350} height={350} alt={"NFT mint template"} />
           </div>
           <div>
-            <h1 className="mb-8 mt-16 md:mt-0 w-4/5 mx-auto text-2xl text-center">A total of <span className="text-brand">{maxSupply.toNumber()}</span> unique DeezNutz Tokens are ready to be minted!</h1>
+            <h1 className="mb-8 mt-16 md:mt-0 w-4/5 mx-auto text-4xl text-center">A total of <span className="text-brand">{maxSupply.toNumber()}</span> unique DeezNutz Tokens are ready to be minted!</h1>
 
             {nftsClaimed ?
               <p className="mt-12 text-white bg-brand text-2xl text-center shadow p-8">{feedback}</p>
