@@ -8,6 +8,7 @@ const Nav = () => {
     { name: 'NFTs', path: '/' },
     { name: 'Mint', path: '/mint' },
     { name: 'Team', path: '/team' },
+    // { name: 'Collection', path: '/collection' },
     // { name: 'Roadmap', path: '/roadmap' },
     // { name: 'Perks', path: '/perks' },
   ]

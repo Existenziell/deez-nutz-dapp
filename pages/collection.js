@@ -1,62 +1,73 @@
+import { useEffect, useState } from 'react'
+import getContractInfo from '../lib/getContractInfo'
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
+import axios from 'axios'
+import Image from 'next/image'
+import Main from '../components/Main'
+
 const Collection = () => {
 
+  const [loading, setLoading] = useState(true)
+  const [contractInfo, setContractInfo] = useState({})
   const [mintedNfts, setMintedNfts] = useState([])
-  const [revealing, setRevealing] = useState(false)
-  const [revealed, setRevealed] = useState(false)
 
-  useEffect(() => {
-    revealMintedNfts()
+  useEffect(async () => {
+    // const info = await getContractInfo()
+    // setContractInfo(info)
+    // console.log(info);
+    // const meta = await getMetadata()
+    // console.log(meta);
+    // setMintedNfts(meta)
+    // setLoading(false)
   }, [])
 
-  async function revealMintedNfts() {
-    // Hide if already revealed
-    if (revealed) {
-      setRevealed(false)
-      return
-    }
-    setRevealing(true)
-    const mintedNfts = []
-    for (let i = 1; i <= contractInfo.totalSupply; i++) {
+  async function getMetadata() {
+    console.log("getMetadata", contractInfo);
+    let mintedNfts = []
+    for (let i = 1; i <= contractInfo.totalSupply.toNumber(); i++) {
       const meta = await axios.get(`${contractInfo.baseUri}${i}`)
+      console.log(meta);
       mintedNfts.push(meta)
     }
-
-    await setMintedNfts(mintedNfts)
-    setRevealing(false)
-    setRevealed(true)
+    return mintedNfts
   }
 
-  return (
-    <div>
-      {/* <span onClick={revealMintedNfts} className="block text-brand cursor-pointer">
-{revealed ? `[Hide minted Tokens]` : `[Reveal minted Tokens]`}
-</span>
+  if (loading || !mintedNfts)
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <ClimbingBoxLoader color={"var(--color-brand)"} size={40} />
+        <p className="font-mono relative top-24 left-6 dark:text-white">Connecting to the blockchain...</p>
+      </div>
+    )
 
-{revealing &&
-<span className="block mt-8 h-8">
-  <ClimbingBoxLoader color={"var(--color-brand)"} loading={revealing} size={10} />
-</span>
-} */}
+  if (loading === false && mintedNfts) {
 
-      <h2 className="text-center">Minted NFTs:</h2>
-      <ul className='flex flex-wrap justify-center items-center p-8 w-screen'>
-        {mintedNfts.map(n => {
-          const { edition, name, description, image, date, dna } = n.data
-          return (
-            <li key={edition} className="mb-16 mr-6 text-center">
-              <Image src={image.toString()} width={200} height={200} alt={description} />
-              <div className='mt-2 dark:text-white'>
-                <h2 className="text-2xl">{name}</h2>
-                {/* <p className="text-xs">Created: {convertTimestamp(date)}</p> */}
-                <p className="text-xs">DNA: {dna}</p>
-                {/* <p>{nft.description}</p> */}
-              </div>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
-  )
+    return (
+      <Main title='Collection' titleSuffix={true}>
+        <h2 className="text-center">Minted NFTs:</h2>
+        <ul className='flex flex-wrap justify-center items-center p-8 w-screen'>
+          {mintedNfts.map(n => {
+            console.log(n.data);
+            const { edition, name, description, image, date, dna } = n.data
+
+            return (
+              <li key={edition} className="mb-16 mr-6 text-center">
+                {image !== undefined &&
+                  <Image src={image.toString()} width={200} height={200} alt={description} />
+                }
+                <div className='mt-2 dark:text-white'>
+                  <h2 className="text-2xl">{name}</h2>
+                  {/* <p className="text-xs">Created: {convertTimestamp(date)}</p> */}
+                  <p className="text-xs">DNA: {dna}</p>
+                  {/* <p>{nft.description}</p> */}
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </Main>
+    )
+  }
 }
 
 export default Collection
