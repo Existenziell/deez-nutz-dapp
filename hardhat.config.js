@@ -74,7 +74,7 @@ module.exports = {
     }
   },
   etherscan: {
-    // apiKey: 'UTJD3EC6SMFYZDJ77E7TTFGCKD1TN7N4XW' // Polygon
-    apiKey: 'I539C4GRATCCH8ERJ8HT3H4JUTU8514WAS' // Ethereum
+    apiKey: 'UTJD3EC6SMFYZDJ77E7TTFGCKD1TN7N4XW' // Polygon
+    // apiKey: 'I539C4GRATCCH8ERJ8HT3H4JUTU8514WAS' // Ethereum
   }
 };

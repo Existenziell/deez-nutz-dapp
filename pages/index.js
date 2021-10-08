@@ -1,74 +1,22 @@
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
-import Web3Modal from "web3modal" //Used to connect to a users ehtereum wallet
-import axios from 'axios'
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 import Link from 'next/link'
 import Image from 'next/image'
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 import Main from '../components/Main'
-import detectEthereumProvider from '@metamask/detect-provider'
-// import { useMoralis } from "react-moralis";
-// import Moralis from 'moralis'
+import Specs from '../components/Specs'
+import getContractInfo from '../lib/getContractInfo'
 
-// Will be populated once the smart contract is deployed.
-import { deeznutzAddress } from '../config'
+const DeezNutz = () => {
 
-// Import ABIs - JSON representation of our smart contracts - allows to interaction from a frontend application
-// Have been compiled by hardhat
-import DeezNutz from '../artifacts/contracts/DeezNutzNFT.sol/DeezNutzNFT.json'
-
-export default function Home() {
-
-  // const { authenticate, isAuthenticated, user } = useMoralis();
-
-  // if (!isAuthenticated) {
-  //   return (
-  //     <div>
-  //       <button onClick={() => authenticate()}>Authenticate with Metamask</button>
-  //     </div>
-  //   );
-  // }
-  // const getUserTokens = async () => {
-  //   const options = { chain: 'mumbai', address: '0x9153Fb4f3e74795b1250D9bd8f4db9A79fab29f9' };
-  //   const balances = await Moralis.Web3.getAllERC20(options)
-  //   const b = await balances
-  //   return balances
-  // }
-  // console.log(getUserTokens());
-
-  // Local state
   const [contractInfo, setContractInfo] = useState({})
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    getContractInfo()
-  }, [])
-
-  async function getContractInfo() {
-    // const moralisId = process.env.NEXT_MORALIS_ID
-    const nodeUrl = `https://speedy-nodes-nyc.moralis.io/661d2cac001d8e6c33d63f3a/polygon/mumbai`;
-    const provider = new ethers.providers.JsonRpcProvider(nodeUrl);
-    // provider is read-only, get a signer for on-chain transactions
-    const signer = provider.getSigner();
-
-    // local: 
-    // const provider = new ethers.providers.JsonRpcProvider()
-
-    // If the third argument is provider, the contract is read-only
-    const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, provider)
-    const info = {
-      address: contract.address,
-      totalSupply: await contract.totalSupply(),
-      baseUri: await contract.baseURI(),
-      cost: await contract.cost(),
-      maxSupply: await contract.maxSupply(),
-      maxMintAmount: await contract.maxMintAmount(),
-    }
-
+  useEffect(async () => {
+    const info = await getContractInfo()
     setContractInfo(info)
     setLoading(false)
-  }
-
+  }, [])
 
   if (loading)
     return (
@@ -110,23 +58,11 @@ export default function Home() {
           <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
         </div>
 
+        <Specs contractInfo={contractInfo} />
+
       </Main>
     )
   }
 }
 
-
-// export async function getStaticProps(context) {
-//   const res = await fetch(`https://deez-nutz.vercel.app/api/1`)
-//   const nut = await res.json()
-
-//   if (!nut) {
-//     return {
-//       notFound: true,
-//     }
-//   }
-
-//   return {
-//     props: { nut }, // will be passed to the page component as props
-//   }
-// }
+export default DeezNutz
