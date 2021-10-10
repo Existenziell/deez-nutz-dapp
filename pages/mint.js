@@ -6,7 +6,7 @@ import getContractInfo from '../lib/getContractInfo'
 import Image from 'next/image'
 import Main from '../components/Main'
 import Specs from '../components/Specs'
-// import { useMoralis } from "react-moralis";
+// import { useMoralis } from "react-moralis"
 // import Moralis from 'moralis'
 
 import { deeznutzAddress } from '../config'
@@ -21,8 +21,8 @@ const Mint = () => {
   const [minting, setMinting] = useState(false)
   const [mintingSuccess, setMintingSuccess] = useState(false)
   const [txHash, setTxHash] = useState("")
-  const [feedback, setFeedback] = useState("");
-  const [networkInfo, setNetworkInfo] = useState("");
+  const [feedback, setFeedback] = useState("")
+  const [networkInfo, setNetworkInfo] = useState("")
 
 
   useEffect(async () => {
@@ -31,45 +31,45 @@ const Mint = () => {
     setLoading(false)
 
     window.ethereum.on('accountsChanged', function (accounts) {
-      // console.log("accountsChanged", accounts);
+      // console.log("accountsChanged", accounts)
       setMinting(false)
     })
 
     window.ethereum.on('chainChanged', function (chainId) {
-      // console.log('chainChanged', chainId);
+      // console.log('chainChanged', chainId)
       setMinting(false)
-    });
+    })
 
   }, [])
 
-  // const { authenticate, isAuthenticated, user } = useMoralis();
+  // const { authenticate, isAuthenticated, user } = useMoralis()
   // if (!isAuthenticated) {
   //   return (
   //     <div>
   //       <button onClick={() => authenticate()}>Authenticate with Metamask</button>
   //     </div>
-  //   );
+  //   )
   // }
   // const getUserTokens = async () => {
-  //   const options = { chain: 'mumbai', address: '0x9153Fb4f3e74795b1250D9bd8f4db9A79fab29f9' };
+  //   const options = { chain: 'mumbai', address: '0x9153Fb4f3e74795b1250D9bd8f4db9A79fab29f9' }
   //   const balances = await Moralis.Web3.getAllERC20(options)
   //   const b = await balances
   //   return balances
   // }
-  // console.log(getUserTokens());
+  // console.log(getUserTokens())
 
   async function mint() {
     setMinting(true)
     // Check MetaMask
     const eth = await detectEthereumProvider()
     if (eth) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+      const provider = new ethers.providers.Web3Provider(window.ethereum, "any")
       // Prompt user for account connections
-      await provider.send("eth_requestAccounts", []);
+      await provider.send("eth_requestAccounts", [])
 
       // const nodeUrl = `https://speedy-nodes-nyc.moralis.io/661d2cac001d8e6c33d63f3a/polygon/mumbai`
       // const provider = new ethers.providers.JsonRpcProvider(nodeUrl)
-      // console.log(provider);
+      // console.log(provider)
 
       const network = await provider.getNetwork()
       if (network.chainId == 80001) {
@@ -77,7 +77,7 @@ const Mint = () => {
         // Since the third argument is signer, the contract data can be manipulated
         const contract = new ethers.Contract(deeznutzAddress, DeezNutz.abi, signer)
         const address = await signer.getAddress()
-        // const accounts = await provider.request({ method: 'eth_requestAccounts' });
+        // const accounts = await provider.request({ method: 'eth_requestAccounts' })
         const transaction = await contract.mint(address, mintAmount)
         await transaction.wait()
           .then((receipt) => {
@@ -119,7 +119,7 @@ const Mint = () => {
         <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4 w-full">
 
           <div className="image-wrapper text-center min-w-max mx-auto border-4 shadow-xl md:mr-16">
-            <Image src={'/gamify.png'} width={350} height={350} alt={"NFT mint template"} />
+            <Image src={'/questionmark.png'} width={350} height={350} alt={"NFT with questionmark"} />
           </div>
 
           {(!mintingSuccess && !minting) &&

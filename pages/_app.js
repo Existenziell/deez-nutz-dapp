@@ -2,9 +2,9 @@ import '../styles/globals.css'
 import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
-import NextNprogress from 'nextjs-progressbar';
-import Banner from '../components/Banner';
-// import { MoralisProvider } from "react-moralis";
+import NextNprogress from 'nextjs-progressbar'
+import Banner from '../components/Banner'
+// import { MoralisProvider } from "react-moralis"
 
 const DeezNutz = ({ Component, pageProps }) => {
   return (

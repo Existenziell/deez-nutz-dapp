@@ -14,19 +14,19 @@ const Collection = () => {
   useEffect(async () => {
     // const info = await getContractInfo()
     // setContractInfo(info)
-    // console.log(info);
+    // console.log(info)
     // const meta = await getMetadata()
-    // console.log(meta);
+    // console.log(meta)
     // setMintedNfts(meta)
     // setLoading(false)
   }, [])
 
   async function getMetadata() {
-    // console.log("getMetadata", contractInfo);
+    // console.log("getMetadata", contractInfo)
     let mintedNfts = []
     for (let i = 1; i <= contractInfo.totalSupply.toNumber(); i++) {
       const meta = await axios.get(`${contractInfo.baseUri}${i}`)
-      // console.log(meta);
+      // console.log(meta)
       mintedNfts.push(meta)
     }
     return mintedNfts
