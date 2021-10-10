@@ -25,10 +25,13 @@ const Mint = () => {
   const [networkInfo, setNetworkInfo] = useState("")
 
 
-  useEffect(async () => {
-    const info = await getContractInfo()
-    setContractInfo(info)
-    setLoading(false)
+  useEffect(() => {
+    async function fetchInfo() {
+      const info = await getContractInfo()
+      setContractInfo(info)
+      setLoading(false)
+    }
+    fetchInfo()
 
     window.ethereum.on('accountsChanged', function (accounts) {
       // console.log("accountsChanged", accounts)

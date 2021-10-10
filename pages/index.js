@@ -12,10 +12,13 @@ const DeezNutz = () => {
   const [contractInfo, setContractInfo] = useState({})
   const [loading, setLoading] = useState(true)
 
-  useEffect(async () => {
-    const info = await getContractInfo()
-    setContractInfo(info)
-    setLoading(false)
+  useEffect(() => {
+    async function fetchInfo() {
+      const info = await getContractInfo()
+      setContractInfo(info)
+      setLoading(false)
+    }
+    fetchInfo()
   }, [])
 
   if (loading)

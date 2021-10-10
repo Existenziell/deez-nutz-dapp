@@ -12,13 +12,16 @@ const Collection = () => {
   const [mintedNfts, setMintedNfts] = useState([])
 
   useEffect(async () => {
-    // const info = await getContractInfo()
-    // setContractInfo(info)
-    // console.log(info)
-    // const meta = await getMetadata()
-    // console.log(meta)
-    // setMintedNfts(meta)
-    // setLoading(false)
+    async function fetchInfo() {
+      // const info = await getContractInfo()
+      // setContractInfo(info)
+      // console.log(info)
+      // const meta = await getMetadata()
+      // console.log(meta)
+      // setMintedNfts(meta)
+      // setLoading(false)
+    }
+    fetchInfo()
   }, [])
 
   async function getMetadata() {
