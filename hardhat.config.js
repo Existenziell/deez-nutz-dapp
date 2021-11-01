@@ -1,5 +1,10 @@
 require("@nomiclabs/hardhat-waffle")
 require("@nomiclabs/hardhat-etherscan")
+require('@nomiclabs/hardhat-ethers');
+require('solidity-coverage')
+// require("hardhat-deploy-ethers");
+// usePlugin("hardhat-deploy-ethers");
+
 const fs = require('fs')
 
 const privateKey = fs.readFileSync(".secret").toString().trim() || ""
