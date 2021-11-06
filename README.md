@@ -8,12 +8,6 @@ Built with Solidity, Next.js, Hardhat, IPFS, Tailwind
 npm install
 ```
 
-or
-
-```sh
-yarn
-```
-
 2. Start the local Hardhat node
 
 ```sh
