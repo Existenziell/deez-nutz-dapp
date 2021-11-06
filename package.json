@@ -22,7 +22,7 @@
     "hardhat-deploy-ethers": "^0.3.0-beta.11",
     "mongodb": "^4.1.2",
     "moralis": "^0.0.66",
-    "next": "12.0.3",
+    "next": "^12.0.3",
     "next-seo": "^4.28.1",
     "nextjs-progressbar": "^0.0.11",
     "react": "17.0.2",
