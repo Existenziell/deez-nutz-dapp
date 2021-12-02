@@ -1,5 +1,6 @@
 {
   "name": "deez-nutz-dapp",
+  "author": "Christof Bauer <bauer.christof@gmail.com> (http://christof.digital/)",
   "version": "0.1.0",
   "private": true,
   "scripts": {
