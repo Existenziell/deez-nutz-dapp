@@ -14,7 +14,7 @@ const Team = () => {
           <h2>L</h2>
           <p>Founder<br />Mastermind<br />Meme hunter</p>
         </li>
-        <li className="w-1/3 hover:border-2 hover:shadow">
+        <li className="w-1/3">
           <Image src="/team/jonny.png" width={200} height={200} alt="jonny" />
           <h2>J</h2>
           <p>Artist<br />Sincerely gifted<br />Best looking of the team</p>
