@@ -2,8 +2,7 @@ import '../styles/globals.css'
 import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Image from 'next/image'
-
-// import Footer from '../components/Footer'
+import Footer from '../components/Footer'
 import NextNprogress from 'nextjs-progressbar'
 import Banner from '../components/Banner'
 // import { MoralisProvider } from "react-moralis"
@@ -26,7 +25,7 @@ const DeezNutz = ({ Component, pageProps }) => {
         <Image src={'/animated.gif'} width={425} height={515} alt={"Animated DeezNutz "} />
       </div>
       <Component {...pageProps} />
-      {/* <Footer /> */}
+      <Footer />
     </div>
     // </MoralisProvider>
   )
