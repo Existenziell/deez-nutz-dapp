@@ -3,4 +3,8 @@ module.exports = {
   images: {
     domains: ['deez-nutz.vercel.app'],
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 }
