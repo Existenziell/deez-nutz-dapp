@@ -10,6 +10,7 @@
 
 # testing
 /coverage
+coverage.json
 
 # next.js
 /.next/
@@ -43,3 +44,4 @@ node_modules
 cache
 artifacts/@openzeppelin
 artifacts/build-info
+hardhat.config.js
