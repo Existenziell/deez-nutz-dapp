@@ -10,7 +10,8 @@ email: bauer.christof@gmail.com
 @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 :root {
-  --color-brand: #00A6D7;
+  /* --color-brand: #00A6D7; */
+  --color-brand: #A630A9;
 }
 
 @tailwind base;
@@ -18,7 +19,7 @@ email: bauer.christof@gmail.com
 @tailwind utilities;
 
 .active {
-  @apply font-extrabold border-b-2;
+  @apply bg-brand text-white;
 }
 
 .button {
@@ -41,6 +42,14 @@ h1 {
 
 h2 {
   @apply mt-6 mb-2 text-xl text-brand;
+}
+
+.link {
+  @apply text-brand;
+}
+
+.link:hover {
+  @apply text-base underline;
 }
 
 /* Counter bug in nextjs Image component - images are rendered with whitespace below

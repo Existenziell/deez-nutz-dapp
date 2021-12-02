@@ -1,7 +1,9 @@
 import '../styles/globals.css'
 import Head from '../components/Head'
 import Nav from '../components/Nav'
-import Footer from '../components/Footer'
+import Image from 'next/image'
+
+// import Footer from '../components/Footer'
 import NextNprogress from 'nextjs-progressbar'
 import Banner from '../components/Banner'
 // import { MoralisProvider } from "react-moralis"
@@ -9,7 +11,7 @@ import Banner from '../components/Banner'
 const DeezNutz = ({ Component, pageProps }) => {
   return (
     // <MoralisProvider appId="CyDwbVDgE1b9Y9eNQCWmbhwTsnpYAQh5Hdz8xwg1" serverUrl="https://eh2neiekfbww.moralishost.com:2053/server">
-    <div className="dark:bg-black">
+    <div className="">
       <Head />
       <NextNprogress
         color="var(--color-brand)"
@@ -18,10 +20,13 @@ const DeezNutz = ({ Component, pageProps }) => {
         height={3}
         showOnShallow={true}
       />
-      <Banner />
       <Nav />
+      <Banner />
+      <div className="absolute top-0 left-12 w-1/3">
+        <Image src={'/animated.gif'} width={425} height={515} alt={"Animated DeezNutz "} />
+      </div>
       <Component {...pageProps} />
-      <Footer />
+      {/* <Footer /> */}
     </div>
     // </MoralisProvider>
   )

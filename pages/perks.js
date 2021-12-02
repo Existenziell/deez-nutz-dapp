@@ -1,12 +1,19 @@
 import Main from "../components/Main"
-
+import Link from 'next/link'
 const Perks = () => {
   return (
     <Main title='Perks' titleSuffix={true}>
-      <h1>Perks</h1>
-      <p className="mt-16 bg-gray-100 rounded shadow p-6">
-        Coming soon!
-      </p>
+      <section className="flex flex-col items-center">
+        <h1 className="text-white">Perks</h1>
+        <p className="my-8 text-center text-2xl leading-normal md:w-1/2">
+          Buying a DeezNutz NFT will grant you access to our impressive array of curated real-life perks, including exclusive access to mansions and yachts in the tropics.<br />
+        </p>
+        <p>
+          More information coming very soon.</p>
+        <p>
+          <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!
+        </p>
+      </section>
     </Main>
   )
 }

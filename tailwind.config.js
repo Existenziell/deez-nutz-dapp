@@ -11,7 +11,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        'brand': '#00A6D7',
+        // 'brand': '#00A6D7',
+        'brand': '#A630A9',
+      },
+      backgroundImage: {
+        'gradient': "url('/gradient.svg')",
       },
     },
   },

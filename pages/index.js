@@ -9,35 +9,41 @@ import getContractInfo from '../lib/getContractInfo'
 
 const DeezNutz = () => {
 
-  const [contractInfo, setContractInfo] = useState({})
-  const [loading, setLoading] = useState(true)
+  // const [contractInfo, setContractInfo] = useState({})
+  // const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    async function fetchInfo() {
-      const info = await getContractInfo()
-      setContractInfo(info)
-      setLoading(false)
-    }
-    fetchInfo()
-  }, [])
+  // useEffect(() => {
+  //   async function fetchInfo() {
+  //     const info = await getContractInfo()
+  //     setContractInfo(info)
+  //     setLoading(false)
+  //   }
+  //   fetchInfo()
+  // }, [])
 
-  if (loading)
-    return (
-      <div className="flex flex-col items-center mt-24">
-        <ClimbingBoxLoader color={"var(--color-brand)"} size={40} />
-        <p className="font-mono relative top-24 left-6 dark:text-white">Connecting to the blockchain...</p>
-      </div>
-    )
+  // if (loading)
+  //   return (
+  //     <div className="flex flex-col items-center mt-24">
+  //       <ClimbingBoxLoader color={"var(--color-brand)"} size={40} />
+  //       <p className="font-mono relative top-24 left-6 dark:text-white">Connecting to the blockchain...</p>
+  //     </div>
+  //   )
 
-  if (loading === false && contractInfo) {
-    const { address, baseUri, cost, totalSupply, maxSupply, maxMintAmount } = contractInfo
+  // if (loading === false && contractInfo) {
+  // const { address, baseUri, cost, totalSupply, maxSupply, maxMintAmount } = contractInfo
 
-    return (
-      <Main title='DeezNutz NFTs' titleSuffix={false}>
-        <h1 className="text-center">DeezNutz NFT collection</h1>
-        <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
+  return (
+    <Main title='DeezNutz NFTs' titleSuffix={false}>
+      <h1 className="text-center text-white mt-8">DeezNutz NFT collection</h1>
+      <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
 
-        <div className="text-lg text-center mt-16 bg-gray-50 rounded shadow p-8 md:w-1/2 dark:bg-gray-800 dark:text-white">
+      <p className='my-8 text-center text-2xl leading-relaxed md:w-1/2'>
+        DeezNutz is a collection of 10.000 unique Digital Collectibles, living on the Polygon blockchain.
+        Minting will start very soon.{" "}
+        <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!
+      </p>
+
+      {/* <div className="text-lg text-center mt-16 bg-gray-50 rounded shadow p-8 md:w-1/2 dark:bg-gray-800 dark:text-white">
           <p>
             DeezNutz is a collection of {maxSupply.toNumber()} unique Digital Collectibles, living on the Polygon blockchain.
             Claim your very own today. Prices stay the same for all initial NFTs.
@@ -55,17 +61,17 @@ const DeezNutz = () => {
               </button>
             </a>
           </Link>
-        </div>
+        </div> */}
 
-        <div className="my-8">
-          <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
-        </div>
+      <div className="my-8">
+        <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
+      </div>
 
-        <Specs contractInfo={contractInfo} />
+      {/* <Specs contractInfo={contractInfo} /> */}
 
-      </Main>
-    )
-  }
+    </Main>
+  )
+  // }
 }
 
 export default DeezNutz

@@ -121,8 +121,8 @@ const Mint = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4 w-full">
 
-          <div className="image-wrapper text-center min-w-max mx-auto border-4 shadow-xl md:mr-16">
-            <Image src={'/questionmark.png'} width={350} height={350} alt={"NFT with questionmark"} />
+          <div className="image-wrapper text-center min-w-max mx-auto md:mr-16">
+            <Image src={'/animated.gif'} width={425} height={515} alt={"Animated DeezNutz "} />
           </div>
 
           {(!mintingSuccess && !minting) &&

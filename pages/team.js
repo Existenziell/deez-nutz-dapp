@@ -4,7 +4,7 @@ import Main from "../components/Main"
 const Team = () => {
   return (
     <Main title='Team' titleSuffix={true}>
-      <h1>Team</h1>
+      <h1 className='text-white'>Team</h1>
 
       <ul className="my-16 flex items-start justify-center text-center text-sm space-x-8 dark:text-white">
         <li className="w-1/3">

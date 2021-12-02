@@ -6,19 +6,20 @@ const Nav = () => {
   const router = useRouter()
   const links = [
     { name: 'NFTs', path: '/' },
-    { name: 'Mint', path: '/mint' },
+    // { name: 'Mint', path: '/mint' },
+    { name: 'Presale', path: '/presale' },
     { name: 'Team', path: '/team' },
     // { name: 'Collection', path: '/collection' },
     // { name: 'Roadmap', path: '/roadmap' },
-    // { name: 'Perks', path: '/perks' },
+    { name: 'Perks', path: '/perks' },
   ]
 
   return (
-    <nav className="flex pl-8 mt-4 dark:bg-black">
+    <nav className="absolute z-10 flex pl-8 ">
       {links.map(l => {
         return (
           <Link href={l.path} key={l.name}>
-            <a className={`mr-4 text-brand ${router.pathname == l.path ? "active" : ""}`}>
+            <a className={`text-lg text-white hover:bg-brand transition-all p-4 ${router.pathname == l.path ? "active" : ""}`}>
               {l.name}
             </a>
           </Link>

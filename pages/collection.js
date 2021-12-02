@@ -11,7 +11,7 @@ const Collection = () => {
   const [contractInfo, setContractInfo] = useState({})
   const [mintedNfts, setMintedNfts] = useState([])
 
-  useEffect(async () => {
+  useEffect(() => {
     async function fetchInfo() {
       // const info = await getContractInfo()
       // setContractInfo(info)
@@ -48,7 +48,7 @@ const Collection = () => {
     return (
       <Main title='Collection' titleSuffix={true}>
         <h2 className="text-center">Minted NFTs:</h2>
-        <ul className='flex flex-wrap justify-center items-center p-8 w-screen'>
+        <ul className='flex flex-wrap justify-center items-center p-8 w-full'>
           {mintedNfts.map(n => {
             // console.log(n.data);
             const { edition, name, description, image, date, dna } = n.data
