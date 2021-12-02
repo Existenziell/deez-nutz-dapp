@@ -19,7 +19,7 @@ const Nav = () => {
       {links.map(l => {
         return (
           <Link href={l.path} key={l.name}>
-            <a className={`text-lg text-white hover:bg-brand transition-all p-4 ${router.pathname == l.path ? "active" : ""}`}>
+            <a className={`text-lg text-white hover:bg-brand transition-all px-4 py-2 hover:shadow ${router.pathname == l.path ? "active" : ""}`}>
               {l.name}
             </a>
           </Link>

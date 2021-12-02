@@ -19,7 +19,7 @@ email: bauer.christof@gmail.com
 @tailwind utilities;
 
 .active {
-  @apply bg-brand text-white;
+  @apply bg-brand text-white shadow;
 }
 
 .button {

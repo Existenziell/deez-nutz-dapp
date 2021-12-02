@@ -6,9 +6,8 @@ const Team = () => {
   return (
     <Main title='Team' titleSuffix={true}>
       <h1 className='text-white'>Team</h1>
-      <Social />
 
-      <ul className="my-16 flex items-start justify-center text-center text-sm space-x-8 dark:text-white">
+      <ul className="my-12 flex items-start justify-center text-center text-sm space-x-8 dark:text-white">
         <li className="w-1/3">
           <Image src="/team/leon.png" width={200} height={200} alt="leon" />
           <h2>L</h2>
@@ -25,6 +24,7 @@ const Team = () => {
           <p>Blockchain guy<br /> MJ fueled<br />Not your typical nerd</p>
         </li>
       </ul>
+      <Social />
 
     </Main>
   )
