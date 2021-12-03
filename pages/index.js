@@ -34,16 +34,17 @@ const DeezNutz = () => {
 
   return (
     <Main title='DeezNutz NFTs' titleSuffix={false}>
-      <h1 className="text-center">DeezNutz NFT collection</h1>
-      <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
+      <section className='text-center'>
+        <h1>DeezNutz NFT collection</h1>
+        <p className="text-lg italic">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
 
-      <p className='my-8 text-center text-xl leading-normal md:w-1/2'>
-        DeezNutz is a collection of 10.000 unique Digital Collectibles, living on the Polygon blockchain.
-        Minting will start very soon.{" "}
-        <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!
-      </p>
+        <p className='my-8 text-xl leading-normal md:w-1/2 mx-auto'>
+          DeezNutz is a collection of 10.000 unique Digital Collectibles, living on the Polygon blockchain.
+          Minting will start very soon.{" "}
+          <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!
+        </p>
 
-      {/* <div className="text-lg text-center mt-16 bg-gray-50 rounded shadow p-8 md:w-1/2 dark:bg-gray-800 dark:text-white">
+        {/* <div className="text-lg text-center mt-16 bg-gray-50 rounded shadow p-8 md:w-1/2 dark:bg-gray-800 dark:text-white">
           <p>
             DeezNutz is a collection of {maxSupply.toNumber()} unique Digital Collectibles, living on the Polygon blockchain.
             Claim your very own today. Prices stay the same for all initial NFTs.
@@ -63,12 +64,12 @@ const DeezNutz = () => {
           </Link>
         </div> */}
 
-      <div className="my-8">
-        <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
-      </div>
+        <div className="my-8">
+          <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
+        </div>
 
-      {/* <Specs contractInfo={contractInfo} /> */}
-
+        {/* <Specs contractInfo={contractInfo} /> */}
+      </section>
     </Main>
   )
   // }
