@@ -31,7 +31,7 @@ const Mint = () => {
       setContractInfo(info)
       setLoading(false)
     }
-    fetchInfo()
+    // fetchInfo()
 
     window.ethereum.on('accountsChanged', function (accounts) {
       // console.log("accountsChanged", accounts)
@@ -119,13 +119,13 @@ const Mint = () => {
     return (
       <Main title='Mint' titleSuffix={true}>
 
-        <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4 w-full">
+        {/* <div className="flex flex-col md:flex-row items-center justify-center mt-16 mb-4 w-full">
 
           <div className="image-wrapper text-center min-w-max mx-auto md:mr-16">
             <Image src={'/animated.gif'} width={425} height={515} alt={"Animated DeezNutz "} />
-          </div>
+          </div> */}
 
-          {(!mintingSuccess && !minting) &&
+        {/* {(!mintingSuccess && !minting) &&
             <div>
               <h1 className="mb-8 mt-16 md:mt-0 w-4/5 mx-auto text-4xl text-center">A total of <span className="text-brand">{maxSupply.toNumber()}</span> unique DeezNutz Tokens are ready to be minted!</h1>
               <section className="flex flex-col md:flex-row items-center justify-center text-xl mb-8 p-8 border-2 border-dotted dark:border-black dark:bg-gray-800 dark:text-white">
@@ -173,7 +173,7 @@ const Mint = () => {
           }
         </div>
 
-        <Specs contractInfo={contractInfo} />
+        <Specs contractInfo={contractInfo} /> */}
 
       </Main>
     )
