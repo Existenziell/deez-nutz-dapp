@@ -21,7 +21,8 @@ const DeezNutz = ({ Component, pageProps }) => {
       <Nav />
       <Image src="/header.png" width={1920} height={1080} layout={"responsive"} alt={"DeezNutz Banner"} />
       <div className="absolute top-0 left-12 w-1/3">
-        <Image src={'/animated.gif'} width={425} height={515} alt={"Animated DeezNutz"} />
+        {/* <Image src={'/animated.gif'} width={425} height={515} alt={"Animated DeezNutz"} /> */}
+        <video src='animated.webm' controls={false} loop={true} autoPlay={true} muted />
       </div>
       <Component {...pageProps} />
       <Footer />
