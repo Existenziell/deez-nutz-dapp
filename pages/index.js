@@ -34,10 +34,10 @@ const DeezNutz = () => {
 
   return (
     <Main title='DeezNutz NFTs' titleSuffix={false}>
-      <h1 className="text-center text-white mt-8">DeezNutz NFT collection</h1>
+      <h1 className="text-center">DeezNutz NFT collection</h1>
       <p className="text-lg italic text-center">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
 
-      <p className='my-8 text-center text-2xl leading-relaxed md:w-1/2'>
+      <p className='my-8 text-center text-xl leading-normal md:w-1/2'>
         DeezNutz is a collection of 10.000 unique Digital Collectibles, living on the Polygon blockchain.
         Minting will start very soon.{" "}
         <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!

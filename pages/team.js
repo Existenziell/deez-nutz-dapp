@@ -5,7 +5,7 @@ import Social from '../components/Social'
 const Team = () => {
   return (
     <Main title='Team' titleSuffix={true}>
-      <h1 className='text-white'>Team</h1>
+      <h1 className='text-center'>Team</h1>
 
       <ul className="my-12 flex items-start justify-center text-center text-sm space-x-8 dark:text-white">
         <li className="w-1/3">

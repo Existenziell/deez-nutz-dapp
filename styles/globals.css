@@ -37,11 +37,11 @@ email: bauer.christof@gmail.com
 }
 
 h1 {
-  @apply mt-8 mb-2 text-6xl text-brand font-bold;
+  @apply pt-8 mb-2 text-3xl md:text-5xl font-bold;
 }
 
 h2 {
-  @apply mt-6 mb-2 text-xl text-brand;
+  @apply pt-6 mb-2 text-xl;
 }
 
 .link {

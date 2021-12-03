@@ -29,7 +29,7 @@ const Presale = () => {
 
   return (
     <Main title='Presale' titleSuffix={true}>
-      <section className="text-center text-xl">
+      <section className="text-center text-xl leading-normal">
         <h1 className="text-white">Presale</h1>
         <p className="mt-8 mb-2">
           Are you excited for the drop?<br />
