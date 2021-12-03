@@ -4,7 +4,7 @@ module.exports = {
     domains: ['deez-nutz.vercel.app'],
   },
   i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+    locales: ['en'],
+    defaultLocale: 'en',
   },
 }

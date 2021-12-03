@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Main from "../components/Main"
+import Main from '../components/Main'
 import Social from '../components/Social'
 
 const Team = () => {
@@ -7,19 +7,19 @@ const Team = () => {
     <Main title='Team' titleSuffix={true}>
       <h1 className='text-center'>Team</h1>
 
-      <ul className="my-12 flex items-start justify-center text-center text-sm space-x-8 dark:text-white">
-        <li className="w-1/3">
-          <Image src="/team/leon.png" width={200} height={200} alt="leon" />
+      <ul className='my-12 flex items-start justify-center text-center text-sm space-x-8 dark:text-white'>
+        <li className='w-1/3'>
+          <Image src='/team/leon.png' width={200} height={200} alt='leon' />
           <h2>L</h2>
           <p>Founder<br />Mastermind<br />Meme hunter</p>
         </li>
-        <li className="w-1/3">
-          <Image src="/team/jonny.png" width={200} height={200} alt="jonny" />
+        <li className='w-1/3'>
+          <Image src='/team/jonny.png' width={200} height={200} alt='jonny' />
           <h2>J</h2>
           <p>Artist<br />Sincerely gifted<br />Best looking of the team</p>
         </li>
-        <li className="w-1/3">
-          <Image src="/team/chris.png" width={200} height={200} alt="chris" />
+        <li className='w-1/3'>
+          <Image src='/team/chris.png' width={200} height={200} alt='chris' />
           <h2>C</h2>
           <p>Blockchain guy<br /> MJ fueled<br />Not your typical nerd</p>
         </li>
