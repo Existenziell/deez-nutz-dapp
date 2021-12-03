@@ -34,17 +34,23 @@ const DeezNutz = () => {
 
   return (
     <Main title='DeezNutz NFTs' titleSuffix={false}>
-      <section className='text-center'>
-        <h1>DeezNutz NFT collection</h1>
-        <p className="text-lg italic">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
+      <>
 
-        <p className='my-8 text-xl leading-normal md:w-1/2 mx-auto'>
-          DeezNutz is a collection of 10.000 unique Digital Collectibles, living on the Polygon blockchain.
-          Minting will start very soon.{" "}
-          <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!
-        </p>
+        <div className='text-center mb-6'>
+          <h1>DeezNutz NFT collection</h1>
+          <p className="text-lg italic">&ldquo;Algorithmically generated NFT ball sacks&rdquo;</p>
+        </div>
 
-        {/* <div className="text-lg text-center mt-16 bg-gray-50 rounded shadow p-8 md:w-1/2 dark:bg-gray-800 dark:text-white">
+        <section className='text-center flex items-center justify-center'>
+          <video src='animated.webm' controls={false} loop={true} autoPlay={true} muted className='w-1/3' />
+
+          <p className='my-8 text-xl leading-normal'>
+            DeezNutz is a collection of 10.000 unique Digital Collectibles, living on the Polygon blockchain.
+            Minting will start very soon.{" "}
+            <Link href="/presale"><a className="underline">Register your email</a></Link> to get notified before we drop the Nutz!
+          </p>
+
+          {/* <div className="text-lg text-center mt-16 bg-gray-50 rounded shadow p-8 md:w-1/2 dark:bg-gray-800 dark:text-white">
           <p>
             DeezNutz is a collection of {maxSupply.toNumber()} unique Digital Collectibles, living on the Polygon blockchain.
             Claim your very own today. Prices stay the same for all initial NFTs.
@@ -64,12 +70,14 @@ const DeezNutz = () => {
           </Link>
         </div> */}
 
-        <div className="my-8">
+        </section>
+        <div className="my-8 text-center">
           <Image src={"/pattern.png"} width={600} height={600} alt={"Nuts Pattern"} />
         </div>
 
+
         {/* <Specs contractInfo={contractInfo} /> */}
-      </section>
+      </>
     </Main>
   )
   // }
