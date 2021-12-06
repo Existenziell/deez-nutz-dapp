@@ -4,8 +4,8 @@ const Specs = ({ contractInfo }) => {
   const { address, cost, totalSupply } = contractInfo
 
   return (
-    <div className='bg-gray-100 shadow p-4 text-left dark:bg-gray-800 dark:text-white'>
-      <section className='bg-gray-50 p-4 rounded md:w-full dark:bg-gray-800 dark:text-white'>
+    <div className='bg-gray-100 shadow rounded p-2 text-left dark:bg-gray-800 dark:text-white'>
+      <section className='bg-brand p-4 rounded md:w-full dark:bg-gray-800 dark:text-white'>
         <h2>Specs</h2>
         <p>Each DeezNutz is unique and programmatically generated from over 120 possible traits. All Nutz are cute, but some have legendary rare traits! The Nutz are stored as ERC-721 tokens on the Polygon blockchain (cheaper gas fees!) and hosted on IPFS. Minting a Nut costs {ethers.utils.formatEther(cost)} ETH.</p>
         <h2>Fair Distribution</h2>
