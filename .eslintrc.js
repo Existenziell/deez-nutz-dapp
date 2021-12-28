@@ -36,5 +36,5 @@ module.exports = {
     }],
 
   },
-  ignorePatterns: ['coverage.json', '/coverage/*', '/test/*'],
+  ignorePatterns: ['coverage.json', '/coverage/*', '/test/*', 'mint.js'],
 }
