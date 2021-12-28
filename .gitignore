@@ -1,4 +1,7 @@
 .secret
+.secretMumbai
+.secretRinkeby
+.secretRopsten
 .infuraid
 .moralisid
 # config.js
